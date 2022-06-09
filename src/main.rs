@@ -12,26 +12,26 @@ fn main() {
         visitor::Visitor::new("Shin", "Wsup"),
     ];
     loop {
-        let your_name = what_is_your_name();
-        if your_name.is_empty() {
+        let name = what_is_your_name();
+        if name.is_empty() {
             break;
         }
-        if let Some(visitor) = visitor_list.iter().find(|v| v.name == your_name) {
+        if let Some(visitor) = visitor_list.iter().find(|v| v.name == name) {
             visitor.greet_visitor();
         } else {
-            println!("Sorry, {}. Your name in not in list.", your_name);
+            println!("Sorry, {}. Your name in not in list.", name);
             // 最初は追い返すが、新しい友達としてリスト登録してあげる
-            visitor_list.push(visitor::Visitor::new(&your_name, "Hello, New friend"));
+            visitor_list.push(visitor::Visitor::new(&name, "Hello, New friend"));
         }
     }
 }
 
 fn what_is_your_name() -> String {
-    let mut your_name = String::new();
+    let mut name = String::new();
     stdin()
-        .read_line(&mut your_name)
+        .read_line(&mut name)
         .expect("Failed to read line");
-    your_name
+    name
         .trim()
         .to_lowercase()
 }
