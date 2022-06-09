@@ -1,9 +1,9 @@
 use std::io::stdin;
 mod visitor;
-// ↑ このファイルがsrc直下にあるmain.rsなのでこのように
-// mod visitor; という書き方になっている。
-// もし、これが src/bin/(コマンドの名前).rs に移動したとすると
-// use treehouse::visior; となる。
+// ↑ このファイルが`src`直下にある`main.rs`なのでこのように
+// `mod visitor;` という書き方になっている。
+// もし、これが `src/bin/(コマンドの名前).rs` に移動したとすると
+// `use treehouse::visior;` となる。
 
 fn main() {
     println!("Hello, what's your name?");
