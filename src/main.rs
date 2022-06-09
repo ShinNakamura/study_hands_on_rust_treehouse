@@ -14,6 +14,8 @@ fn main() {
     loop {
         let name = what_is_your_name();
         if name.is_empty() {
+            println!("The final list of visitors:");
+            println!("{:#?}", visitor_list);
             break;
         }
         if let Some(visitor) = visitor_list.iter().find(|v| v.name == name) {
