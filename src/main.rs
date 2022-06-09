@@ -8,8 +8,9 @@ mod visitor;
 fn main() {
     println!("Hello, what's your name?(leave empty and press ENTER to quit)");
     let mut visitor_list = vec![
-        visitor::Visitor::new("Bert", "hi"),
-        visitor::Visitor::new("Shin", "Wsup"),
+        visitor::Visitor::new("Bert", "hi", visitor::VisitorAction::Accept),
+        visitor::Visitor::new("Shin", "Wasup", 
+                              visitor::VisitorAction::AcceptWithNote{note: "*".to_string()}),
     ];
     loop {
         let name = what_is_your_name();
@@ -23,7 +24,8 @@ fn main() {
         } else {
             println!("Sorry, {}. Your name in not in list.", name);
             // 最初は追い返すが、新しい友達としてリスト登録してあげる
-            visitor_list.push(visitor::Visitor::new(&name, "Hello, New friend"));
+            visitor_list.push(visitor::Visitor::new(&name, "Hello, New friend",
+                                                    visitor::VisitorAction::Accept));
         }
     }
 }
