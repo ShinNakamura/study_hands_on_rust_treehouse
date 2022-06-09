@@ -6,16 +6,21 @@ mod visitor;
 // `use treehouse::visior;` となる。
 
 fn main() {
-    println!("Hello, what's your name?");
-    let visitor_list = [
+    println!("Hello, what's your name?(leave empty and press ENTER to quit)");
+    let visitor_list = vec![
         visitor::Visitor::new("Bert", "hi"),
         visitor::Visitor::new("Shin", "Wsup"),
     ];
-    let your_name = what_is_your_name();
-    if let Some(visitor) = visitor_list.iter().find(|v| v.name == your_name) {
-        visitor.greet_visitor();
-    } else {
-        println!("Sorry, {}. Your name in not in list.", your_name);
+    loop {
+        let your_name = what_is_your_name();
+        if your_name.is_empty() {
+            break;
+        }
+        if let Some(visitor) = visitor_list.iter().find(|v| v.name == your_name) {
+            visitor.greet_visitor();
+        } else {
+            println!("Sorry, {}. Your name in not in list.", your_name);
+        }
     }
 }
 

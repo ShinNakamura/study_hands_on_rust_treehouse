@@ -1,3 +1,4 @@
+#[derive(Debug)]
 pub struct Visitor {
     pub name: String, // 名前でリストに入っているかチェックするのでパブリックにしてる
     greeting: String,
