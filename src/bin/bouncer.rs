@@ -4,10 +4,15 @@ use treehouse::visitor::{Visitor, VisitorAction};
 fn main() {
     println!("Hello, what's your name?(leave empty and press ENTER to quit)");
     let mut visitor_list = vec![
-        Visitor::new("Bert", "hi", VisitorAction::Accept, 50),
-        Visitor::new("Shin", "Wasup", 
-                              VisitorAction::AcceptWithNote{note: "*".to_string()},
-                              44),
+        Visitor::new("Bert", VisitorAction::Accept, 50),
+        Visitor::new("Shin", 
+                      VisitorAction::AcceptWithNote{note: "V.I.P".to_string()},
+                      44),
+        Visitor::new("Jr", 
+                      VisitorAction::AcceptWithNote{note: "V.I.P son".to_string()},
+                      12),
+        Visitor::new("DJ", VisitorAction::Probation, 30),
+        Visitor::new("Fred", VisitorAction::Refuse, 30),
     ];
     loop {
         let name = what_is_your_name();
@@ -21,9 +26,10 @@ fn main() {
         } else {
             println!("Sorry, {}. Your name in not in list.", name);
             // 最初は追い返すが、新しい友達としてリスト登録してあげる
-            visitor_list.push(Visitor::new(&name, "Hello, New friend",
-                                                    VisitorAction::Accept,
-                                                    21));
+            visitor_list.push(
+                Visitor::new(&name,
+                            VisitorAction::AcceptWithNote{note: "New friend".to_string()},
+                            21));
         }
     }
 }
