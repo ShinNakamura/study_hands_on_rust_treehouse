@@ -6,6 +6,9 @@ mod visitor;
 // `use treehouse::visior;` となる。
 
 fn main() {
+    // コーディングを src/bin/bouncer.rs に移行
+    return;
+
     println!("Hello, what's your name?(leave empty and press ENTER to quit)");
     let mut visitor_list = vec![
         visitor::Visitor::new("Bert", "hi", visitor::VisitorAction::Accept, 50),
